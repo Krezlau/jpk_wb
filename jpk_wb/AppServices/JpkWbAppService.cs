@@ -1,4 +1,6 @@
-﻿namespace jpk_wb.AppServices;
+﻿using jpk_wb.Services;
+
+namespace jpk_wb.AppServices;
 
 public interface IJpkWbAppService
 {
@@ -10,6 +12,16 @@ public interface IJpkWbAppService
 
 public class JpkWbAppService : IJpkWbAppService
 {
+    private readonly IBankStatementService _bankStatementService;
+    private readonly ICompanyInfoService _companyInfoService;
+
+    public JpkWbAppService(IBankStatementService bankStatementService,
+        ICompanyInfoService companyInfoService)
+    {
+        _bankStatementService = bankStatementService;
+        _companyInfoService = companyInfoService;
+    }
+
     public async Task Run(string file, string output)
     {
         await AddData(file);
@@ -24,6 +36,7 @@ public class JpkWbAppService : IJpkWbAppService
     public async Task DeleteData()
     {
         Console.WriteLine("DeleteData");
+        await _bankStatementService.GetBankStatements();
     }
 
     public async Task CreateXml(string output)

@@ -1,11 +1,23 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.CommandLine;
 using jpk_wb.AppServices;
+using jpk_wb.Data;
+using jpk_wb.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 ServiceCollection services = new ServiceCollection();
 
-services.AddTransient<IJpkWbAppService, JpkWbAppService>();
+services.AddScoped<IJpkWbAppService, JpkWbAppService>();
+
+services.AddScoped<IBankStatementService, BankStatementService>();
+services.AddScoped<ICompanyInfoService, CompanyInfoService>();
+
+services.AddDbContext<AppDbContext>(options =>
+{
+    options.UseSqlServer(
+        "Server=tcp:sqlserver-pola.database.windows.net,1433;Initial Catalog=jpk_wb;Persist Security Info=False;User ID=krezlau;Password=Cebula123!@#;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+});
 
 var serviceProvider = services.BuildServiceProvider();
 
