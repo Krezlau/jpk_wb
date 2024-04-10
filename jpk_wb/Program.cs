@@ -16,7 +16,7 @@ services.AddScoped<ICompanyInfoService, CompanyInfoService>();
 services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(
-        "Server=tcp:sqlserver-pola.database.windows.net,1433;Initial Catalog=jpk_wb;Persist Security Info=False;User ID=krezlau;Password=Cebula123!@#;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        "Server=tcp:sqlserver-pola.database.windows.net,1433;Initial Catalog=jpk_wb;Persist Security Info=False;User ID=krezlau;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 });
 
 var serviceProvider = services.BuildServiceProvider();
@@ -25,9 +25,9 @@ var rootCommand = new RootCommand("JPK_WB parser");
 
 var fileOption = new Option<string>("--file",
                                      description: "File to parse");
- fileOption.AddAlias("-f");
- fileOption.IsRequired = true;
- rootCommand.AddOption(fileOption);
+fileOption.AddAlias("-f");
+fileOption.IsRequired = true;
+rootCommand.AddOption(fileOption);
  
 var outputOption = new Option<string>("--output",
                                       description: "Output file",
@@ -35,12 +35,17 @@ var outputOption = new Option<string>("--output",
 outputOption.AddAlias("-o");
 rootCommand.AddOption(outputOption);
 
-var addCommand = new Command("add", "Add data");
+var addCommand = new Command("add-company", "Add data");
 rootCommand.AddCommand(addCommand);
-addCommand.AddAlias("a");
+addCommand.AddAlias("ac");
 addCommand.AddOption(fileOption);
 
-var deleteCommand = new Command("delete", "Delete data");
+var addDataCommand = new Command("add-data", "Add data");
+rootCommand.AddCommand(addDataCommand);
+addDataCommand.AddAlias("ad");
+addDataCommand.AddOption(fileOption);
+
+var deleteCommand = new Command("delete-data", "Delete data");
 rootCommand.AddCommand(deleteCommand);
 deleteCommand.AddAlias("d");
 
