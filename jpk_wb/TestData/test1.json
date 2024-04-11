@@ -1,0 +1,30 @@
+﻿{
+  "informacjePodmiotu": {
+    "nip": 1234567890,
+    "pelnaNazwa": "Losowa Firma Sp. z o.o.",
+    "regon": "123456789",
+    "kodKraju": "PL",
+    "wojewodztwo": "mazowieckie",
+    "powiat": "Warszawa",
+    "gmina": "Warszawa",
+    "ulica": "Losowa",
+    "nrDomu": "1",
+    "nrLokalu": "1",
+    "miejscowosc": "Warszawa",
+    "kodPocztowy": "00-000",
+    "poczta": "Warszawa"
+  },
+  "wyciagBankowy": {
+    "numerRachunku": "12345678901234567890123456",
+    "transakcje": [
+      {
+        "dataOperacji": "0001-01-01T00:00:00",
+        "nazwaPodmiotu": "Losowa Firma 2 Sp. z o.o.",
+        "opisOperacji": "Przelew",
+        "kwotaOperacji": 10.0,
+        "saldoOperacji": 890.0,
+        "symbolWaluty": "PLN"
+      }
+    ] 
+  }
+}

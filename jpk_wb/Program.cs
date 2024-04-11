@@ -16,7 +16,7 @@ services.AddScoped<ICompanyInfoService, CompanyInfoService>();
 services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(
-        "Server=tcp:sqlserver-pola.database.windows.net,1433;Initial Catalog=jpk_wb;Persist Security Info=False;User ID=krezlau;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        "Server=tcp:sqlserver-pola.database.windows.net,1433;Initial Catalog=jpk_wb;Persist Security Info=False;User ID=krezlau;Password=Cebula123!@#;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 });
 
 var serviceProvider = services.BuildServiceProvider();

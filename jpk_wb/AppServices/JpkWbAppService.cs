@@ -1,4 +1,6 @@
-﻿using jpk_wb.Services;
+﻿using jpk_wb.Data;
+using jpk_wb.Services;
+using Newtonsoft.Json;
 
 namespace jpk_wb.AppServices;
 
@@ -30,13 +32,38 @@ public class JpkWbAppService : IJpkWbAppService
 
     public async Task AddData(string file)
     {
-        Console.WriteLine("AddData");
+        Console.WriteLine("Adding data from file: {0}", file);
+        // read json from file
+        DataDTO? data = null;
+        try
+        {
+            var json = await File.ReadAllTextAsync(file);
+            data = JsonConvert.DeserializeObject<DataDTO>(json);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error reading file: {0}", e.Message);
+        }
+        
+        // validation
+        if (data is null) return;
+        
+        // save to db 
+        var companyInfo = data.InformacjePodmiotu.ToEntity();
+        await _companyInfoService.AddCompanyInfo(companyInfo);
+        
+        var bankStatement = data.WyciagBankowy.ToEntity(companyInfo.Id);
+        await _bankStatementService.AddBankStatement(bankStatement);
+        
+        Console.WriteLine("done");
     }
 
     public async Task DeleteData()
     {
-        Console.WriteLine("DeleteData");
-        await _bankStatementService.GetBankStatements();
+        Console.WriteLine("Deleting data from the database");
+        await _companyInfoService.DeleteCompanyInfo();
+        await _bankStatementService.DeleteBankStatements();
+        Console.WriteLine("done");
     }
 
     public async Task CreateXml(string output)
