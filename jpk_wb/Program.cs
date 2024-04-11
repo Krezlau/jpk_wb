@@ -35,17 +35,18 @@ var outputOption = new Option<string>("--output",
 outputOption.AddAlias("-o");
 rootCommand.AddOption(outputOption);
 
-var addCommand = new Command("add-company", "Add data");
+var companyOption = new Option<string>("--company",
+                                       description: "Company name to use");
+companyOption.AddAlias("-c");
+companyOption.IsRequired = false;
+rootCommand.AddOption(companyOption);
+
+var addCommand = new Command("add", "Add data");
 rootCommand.AddCommand(addCommand);
-addCommand.AddAlias("ac");
+addCommand.AddAlias("a");
 addCommand.AddOption(fileOption);
 
-var addDataCommand = new Command("add-data", "Add data");
-rootCommand.AddCommand(addDataCommand);
-addDataCommand.AddAlias("ad");
-addDataCommand.AddOption(fileOption);
-
-var deleteCommand = new Command("delete-data", "Delete data");
+var deleteCommand = new Command("delete", "Delete data");
 rootCommand.AddCommand(deleteCommand);
 deleteCommand.AddAlias("d");
 
@@ -53,6 +54,7 @@ var createXmlCommand = new Command("create-xml", "Create XML file");
 rootCommand.AddCommand(createXmlCommand);
 createXmlCommand.AddAlias("c");
 createXmlCommand.AddOption(outputOption);
+createXmlCommand.AddOption(companyOption);
 
 addCommand.SetHandler(
     async (fileOptionValue) =>

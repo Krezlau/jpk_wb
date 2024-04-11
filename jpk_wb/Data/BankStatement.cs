@@ -10,4 +10,8 @@ public class BankStatement
     public string NumerRachunku { get; set; } = string.Empty;
     
     public virtual List<Transaction> Transakcje { get; set; } = new();
+    
+    public Guid InformacjePodmiotuId { get; set; }
+    
+    public virtual CompanyInfo InformacjePodmiotu { get; set; }
 }
