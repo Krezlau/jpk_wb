@@ -15,7 +15,7 @@
     "poczta": "Warszawa"
   },
   "wyciagBankowy": {
-    "numerRachunku": "12345678901234567890123456",
+    "numerRachunku": "1234567890123456789012345660000",
     "transakcje": [
       {
         "dataOperacji": "2024-01-01T00:00:00",
@@ -28,7 +28,7 @@
       {
         "dataOperacji": "2024-02-01T00:00:00",
         "nazwaPodmiotu": "Losowa Firma 2 Sp. z o.o.",
-        "opisOperacji": "Przelew",
+        "opisOperacji": "",
         "kwotaOperacji": 10.0,
         "saldoOperacji": 890.0,
         "symbolWaluty": "PLN"

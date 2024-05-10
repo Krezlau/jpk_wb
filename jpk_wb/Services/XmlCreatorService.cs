@@ -61,6 +61,7 @@ public static class XmlCreatorService
         var identyfikator = ConstructRoot("IdentyfikatorPodmiotu");
         identyfikator.Add(new XElement("etd" + "NIP", data.InformacjePodmiotu!.NIP));
         identyfikator.Add(new XElement("etd" + "PelnaNazwa", data.InformacjePodmiotu!.PelnaNazwa));
+        identyfikator.Add(new XElement("etd" + "REGON", data.InformacjePodmiotu!.REGON));
         
         root.Add(identyfikator);
         
