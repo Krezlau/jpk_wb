@@ -35,12 +35,6 @@ var outputOption = new Option<string>("--output",
 outputOption.AddAlias("-o");
 rootCommand.AddOption(outputOption);
 
-var companyOption = new Option<string>("--company",
-                                       description: "Company name to use");
-companyOption.AddAlias("-c");
-companyOption.IsRequired = false;
-rootCommand.AddOption(companyOption);
-
 var addCommand = new Command("add", "Add data");
 rootCommand.AddCommand(addCommand);
 addCommand.AddAlias("a");
@@ -54,32 +48,31 @@ var createXmlCommand = new Command("create-xml", "Create XML file");
 rootCommand.AddCommand(createXmlCommand);
 createXmlCommand.AddAlias("c");
 createXmlCommand.AddOption(outputOption);
-createXmlCommand.AddOption(companyOption);
 
 addCommand.SetHandler(
     async (fileOptionValue) =>
     {
-        await serviceProvider.GetService<IJpkWbAppService>()!.AddData(fileOptionValue);
+        await serviceProvider.GetService<IJpkWbAppService>()!.AddDataAsync(fileOptionValue);
     },
     fileOption);
 
 deleteCommand.SetHandler(
     async () =>
     {
-        await serviceProvider.GetService<IJpkWbAppService>()!.DeleteData();
+        await serviceProvider.GetService<IJpkWbAppService>()!.DeleteDataAsync();
     });
 
 createXmlCommand.SetHandler(
     async (outputOptionValue) =>
     {
-        await serviceProvider.GetService<IJpkWbAppService>()!.CreateXml(outputOptionValue);
+        await serviceProvider.GetService<IJpkWbAppService>()!.CreateXmlAsync(outputOptionValue);
     },
     outputOption);
 
 rootCommand.SetHandler(
     async (fileOptionValue, outputOptionValue) =>
     {
-        await serviceProvider.GetService<IJpkWbAppService>()!.Run(fileOptionValue, outputOptionValue);
+        await serviceProvider.GetService<IJpkWbAppService>()!.RunAsync(fileOptionValue, outputOptionValue);
     },
     fileOption, outputOption);
     

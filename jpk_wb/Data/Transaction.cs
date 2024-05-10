@@ -9,6 +9,7 @@ public class Transaction
     
     public DateTime DataOperacji { get; set; }
     
+    [MaxLength(250)]
     public string NazwaPodmiotu { get; set; } = string.Empty;
     
     public string OpisOperacji { get; set; } = string.Empty;
@@ -17,5 +18,6 @@ public class Transaction
     
     public decimal SaldoOperacji { get; set; }
     
+    [MaxLength(3)]
     public string SymbolWaluty { get; set; } = string.Empty;
 }

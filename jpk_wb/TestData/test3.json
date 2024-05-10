@@ -1,6 +1,6 @@
 ﻿{
   "informacjePodmiotu": {
-    "nip": 123456789000,
+    "nip": 1234567890,
     "pelnaNazwa": "Losowa Firma Sp. z o.o.",
     "regon": "123456789",
     "kodKraju": "PL",
@@ -11,7 +11,8 @@
     "nrDomu": "1",
     "nrLokalu": "1",
     "miejscowosc": "Warszawa",
-    "kodPocztowy": "00000"
+    "kodPocztowy": "00-000",
+    "poczta": "Warszawa"
   },
   "wyciagBankowy": {
     "numerRachunku": "12345678901234567890123456",
@@ -27,7 +28,7 @@
       {
         "dataOperacji": "2024-02-01T00:00:00",
         "nazwaPodmiotu": "Losowa Firma 2 Sp. z o.o.",
-        "opisOperacji": "",
+        "opisOperacji": "Przelew 2",
         "kwotaOperacji": 10.0,
         "saldoOperacji": 900.0,
         "symbolWaluty": "PLN"

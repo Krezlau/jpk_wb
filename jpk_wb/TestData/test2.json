@@ -1,18 +1,4 @@
 ﻿{
-  "informacjePodmiotu": {
-    "nip": 123456789000,
-    "pelnaNazwa": "Losowa Firma Sp. z o.o.",
-    "regon": "123456789",
-    "kodKraju": "PL",
-    "wojewodztwo": "mazowieckie",
-    "powiat": "Warszawa",
-    "gmina": "Warszawa",
-    "ulica": "Losowa",
-    "nrDomu": "1",
-    "nrLokalu": "1",
-    "miejscowosc": "Warszawa",
-    "kodPocztowy": "00000"
-  },
   "wyciagBankowy": {
     "numerRachunku": "12345678901234567890123456",
     "transakcje": [
