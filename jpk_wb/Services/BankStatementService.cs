@@ -5,6 +5,7 @@ namespace jpk_wb.Services;
 
 public interface IBankStatementService
 {
+    Task<BankStatement?> GetBankStatement();
     Task<List<BankStatement>> GetBankStatements();
     Task AddBankStatement(BankStatement bankStatement);
     Task DeleteBankStatements();
@@ -17,6 +18,14 @@ public class BankStatementService : IBankStatementService
     public BankStatementService(AppDbContext context)
     {
         _context = context;
+    }
+
+    public async Task<BankStatement?> GetBankStatement()
+    {
+        return await _context.BankStatements
+            .Include(x => x.InformacjePodmiotu)
+            .Include(x => x.Transakcje)
+            .FirstOrDefaultAsync();
     }
 
     public async Task<List<BankStatement>> GetBankStatements()

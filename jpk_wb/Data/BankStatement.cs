@@ -15,5 +15,5 @@ public class BankStatement
     
     public Guid InformacjePodmiotuId { get; set; }
     
-    public virtual CompanyInfo InformacjePodmiotu { get; set; }
+    public virtual CompanyInfo? InformacjePodmiotu { get; set; }
 }
